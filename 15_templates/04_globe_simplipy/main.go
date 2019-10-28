@@ -14,22 +14,45 @@ func init() {
 
 func main() {
 
-	err := tpl.Execute(os.Stdout, nil)
+	data := struct {
+		Title string
+		Items []string
+	}{
+		Title: "My page",
+		Items: []string{
+			"My photos",
+			"My blog",
+		},
+	}
+
+	twoData := struct {
+		Title string
+		Data  map[string]string
+	}{
+		"Telecommunication Technology",
+		map[string]string{
+			"34": "Faisal",
+			"35": "Hridoy",
+			"36": "Shourab",
+		},
+	}
+
+	err := tpl.Execute(os.Stdout, data)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	err = tpl.ExecuteTemplate(os.Stdout, "hello.gohtml", nil)
+	err = tpl.ExecuteTemplate(os.Stdout, "hello.gohtml", data)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	err = tpl.ExecuteTemplate(os.Stdout, "two.gohtml", nil)
+	err = tpl.ExecuteTemplate(os.Stdout, "two.gohtml", twoData)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	err = tpl.ExecuteTemplate(os.Stdout, "one.gohtml", nil)
+	err = tpl.ExecuteTemplate(os.Stdout, "one.gohtml", data)
 	if err != nil {
 		log.Fatalln(err)
 	}

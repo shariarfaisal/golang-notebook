@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {{range $k,$v := .}}
+    <div class="">
+      <h1>{{$v.Title}}</h1>
+      <ul>
+        {{range $pk,$pv := $v.Person}}
+        <li>{{$pv}}</li>
+        {{end}}
+      </ul>
+    </div>
+    {{end}}
+
+  </body>
+</html>

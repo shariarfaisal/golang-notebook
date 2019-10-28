@@ -1,2 +1,15 @@
-Tpl
-****
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>{{.Title}}</h1>
+    <ul>
+      {{range $i,$v := .Items}}
+      <li>{{$v}}</li>
+      {{end}}
+    </ul>
+  </body>
+</html>
