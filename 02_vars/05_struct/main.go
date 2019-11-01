@@ -1,7 +1,9 @@
 package main
 
 // 2 hour 43 mins left ...
-import "fmt"
+import (
+	"fmt"
+)
 
 type address struct {
 	Dep   string
@@ -11,7 +13,7 @@ type address struct {
 
 type person struct {
 	address
-	Name  string
+	Name  string // `required max: "100"` -> import "reflect"
 	Email string
 	Phone string
 	Gpa   float64
@@ -35,13 +37,17 @@ func main() {
 
 	faisal := person{
 		// address: add, or address{...}
-		// Name:  "Faisal",
+		Name:  "Faisal",
 		Email: "faisal@gmail.com",
 		Phone: "018",
 		Gpa:   3.75,
 	}
+	//
+	// t := reflect.TypeOf(person{})
+	// field, _ := t.FieldByName("Name")
+	// fmt.Println(field.Tag)
 
-	faisal.set("Faisal")
+	// faisal.set("Faisal")
 
 	faisal.Dep = "tct"
 	faisal.Books = []string{"A", "B", "C"}
